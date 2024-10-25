@@ -5,9 +5,6 @@ import {getAuth} from 'firebase/auth';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-console.log("before");
-const firebaseApiKey = process.env.REACT_APP_FIREBASE_API_KEY;
-console.log('Firebase API Key:', firebaseApiKey); // For debugging
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
