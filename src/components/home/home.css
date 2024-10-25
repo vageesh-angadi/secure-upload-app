@@ -1,0 +1,70 @@
+/* src/styles/Home.css */
+
+/* General styles for the home container */
+.home-container {
+    background-color: #f8f9fa; /* Light grey background for the page */
+    min-height: 100vh; /* Full height of the viewport */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+}
+
+/* Upload section styles */
+.upload-section {
+    background-color: #ffffff; /* White background for the upload section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 20px; /* Padding inside the upload section */
+    max-width: 400px; /* Maximum width for the upload section */
+    width: 100%; /* Full width on smaller screens */
+    animation: fadeIn 0.5s ease-in; /* Animation for fade-in effect */
+}
+
+/* Headings */
+h2 {
+    text-align: center; /* Center align the heading */
+    color: #333333; /* Dark grey color for the text */
+}
+
+/* Input styles for file upload */
+input[type="file"] {
+    width: 100%; /* Full width for file input */
+    padding: 10px; /* Padding inside the file input */
+    margin: 10px 0; /* Margin above and below the input */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Button styles */
+.upload-button {
+    background-color: #007bff; /* Blue background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    padding: 10px; /* Padding inside the button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    width: 100%; /* Full width for the button */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+/* Button hover effect */
+.upload-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Error message styles */
+p.error {
+    text-align: center; /* Center align the error message */
+    color: #ff0000; /* Red color for error messages */
+}
+
+/* Animation for fading in */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start transparent */
+    }
+    to {
+        opacity: 1; /* Fade to opaque */
+    }
+}
