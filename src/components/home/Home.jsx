@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import './home.css';
+import { uploadFile } from '../s3/s3Service';
+
 
 function Home() {
     const [file, setFile] = useState(null);
@@ -33,8 +35,13 @@ function Home() {
             setError('Please select a file to upload.');
             return;
         }
-        alert(`Uploading: ${file.name}`);
-    };
+        try {
+            const response = await uploadFile(file);
+            alert(`File uploaded successfully! ${response.Location}`);
+        } catch (err) {
+            setError(err.message);
+        }
+     };
 
     const handleLogout = async () => {
         try {
