@@ -1,23 +1,29 @@
 // src/components/Register.js
 import React, { useState } from 'react';
-// import { auth } from '../firebaseConfig';
-// import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import './register.css'; // Import CSS
+import { auth } from '../auth/firebaseConfig';
 
 function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        try {
-            // await createUserWithEmailAndPassword(auth, email, password);
-            alert("Registration successful!");
-        } catch (err) {
-            setError(err.message);
+        if (password !== confirmPassword) {
+          setError("Passwords do not match!");
+          return;
         }
-    };
+        try {
+          await createUserWithEmailAndPassword(auth, email, password);
+          alert("Registration successful!");
+          // Redirect to Home page or do whatever you need after registration
+        } catch (err) {
+          setError(err.message);
+        }
+      };
 
     return (
         <div className="register-container">
@@ -34,6 +40,12 @@ function Register() {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 <button type="submit">Register</button>
             </form>
