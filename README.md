@@ -13,7 +13,7 @@ A React application for securely uploading files to AWS S3 with Firebase authent
 ## Prerequisites
 
 To set up and run this project, you’ll need:
-- **Node.js** installed ([Download Node.js](https://nodejs.org/))
+- **Node.js** installed
 - **Firebase** and **AWS S3** credentials
 
 ---
@@ -28,8 +28,6 @@ To set up and run this project, you’ll need:
 
 ### 2. Install Dependencies
 
-3. Set Up Environment Files
-Create the following environment files in the project’s root directory:
 - npm install
 
 ### 3. Set Up Environment Files
