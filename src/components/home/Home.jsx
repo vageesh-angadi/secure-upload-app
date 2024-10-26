@@ -3,6 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import './home.css';
+import { uploadFile } from '../s3/s3Service';
+import { OrbitProgress } from 'react-loading-indicators';
+
+
 
 function Home() {
     const [file, setFile] = useState(null);
@@ -10,17 +14,18 @@ function Home() {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
     const auth = getAuth();
+    const [uploading, setUploading] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser); // Set user if authenticated, otherwise null
+            setUser(currentUser); 
         });
-        return () => unsubscribe(); // Clean up listener
+        return () => unsubscribe(); 
     }, [auth]);
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
-        setError(''); // Clear any previous errors
+        setError(''); 
     };
 
     const handleUpload = async (e) => {
@@ -33,15 +38,26 @@ function Home() {
             setError('Please select a file to upload.');
             return;
         }
-        alert(`Uploading: ${file.name}`);
-    };
+        setUploading(true);
+        try {
+            const response = await uploadFile(file);
+            setTimeout(() => {
+                setUploading(false);
+                alert("Uploaded successfully:",response.Location);
+            }, 300); 
+            
+        } catch (err) {
+            setUploading(false);
+            setError(err.message);
+        }
+
+     };
 
     const handleLogout = async () => {
         try {
             await signOut(auth);
             setUser(null);
             setFile('');
-            // navigate('/login');
         } catch (error) {
             console.error("Error logging out:", error);
         }
@@ -53,27 +69,36 @@ function Home() {
 
     return (
         <div className="home-container">
-            <div className="upload-section">
-                <h2>Upload File</h2>
-                
-                <form onSubmit={handleUpload}>
-                    <input
-                        type="file"
-                        onChange={handleFileChange}
-                    />
-                    <button className="upload-button" type="submit">
-                        Upload
-                    </button>
-                </form>
-                
-                {!user ? (
-                    <button className="signin-button" onClick={handleSignIn}>Sign In</button>
-                ) : (
-                    <button className="logout-button" onClick={handleLogout}>Logout</button>
-                )}
-                
-                {error && <p className="error">{error}</p>}
-            </div>
+            {uploading?(          
+                <OrbitProgress 
+                    variant="dotted" 
+                    dense 
+                    color="#222a22" 
+                    size="small" 
+                    text="Uploading.." 
+                    textColor="#060505"
+                    className="loading-spinner" 
+                />):(<div className="upload-section">
+                    <h2>Upload File</h2>
+                    
+                    <form onSubmit={handleUpload}>
+                        <input
+                            type="file"
+                            onChange={handleFileChange}
+                        />
+                        <button className="upload-button" type="submit">
+                            Upload
+                        </button>
+                    </form>
+                    
+                    {!user ? (
+                        <button className="signin-button" onClick={handleSignIn}>Sign In</button>
+                    ) : (
+                        <button className="logout-button" onClick={handleLogout}>Logout</button>
+                    )}
+                    
+                    {error && <p className="error">{error}</p>}
+                </div>)}
         </div>
     );
 }
