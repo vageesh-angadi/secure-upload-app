@@ -30,41 +30,40 @@ To set up and run this project, you’ll need:
 
 3. Set Up Environment Files
 Create the following environment files in the project’s root directory:
-npm install
+- npm install
 
 ### 3. Set Up Environment Files
 In each of the following environmental file:
-.env.dev
-.env.preprod
-.env.prod
+- .env.dev
+- .env.preprod
+- .env.prod
 
 Replace each placeholder (your-firebase-api-key, etc.) with your actual Firebase and AWS credentials.
 # AWS Config
-REACT_APP_S3_REGION=your-s3-region
-REACT_APP_S3_BUCKET_NAME=your-s3-bucket-name
-REACT_APP_AWS_ACCESS_KEY=your-aws-access-key
-REACT_APP_AWS_SECRET_KEY=your-aws-secret-key
+- REACT_APP_S3_REGION=your-s3-region
+- REACT_APP_S3_BUCKET_NAME=your-s3-bucket-name
+- REACT_APP_AWS_ACCESS_KEY=your-aws-access-key
+- REACT_APP_AWS_SECRET_KEY=your-aws-secret-key
 
 
 ### 4. Running the Application
 To start the app in development mode:
-npm run start:dev
+- npm run start:dev
 
 For other environments:
-Preproduction: npm run start:preprod
-Production: npm run start:prod
+- Preproduction: npm run start:preprod
+- Production: npm run start:prod
 
 
 ### 5. Using the Application
-Login/Register:
+#### Login/Register:
 
-Open the app to access the login page.
-If you don’t have an account, click Register to create one.
-Use your credentials to log in and access the Home page.
-Upload a File:
+- Open the app to access the login page.
+- If you don’t have an account, click Register to create one.
+- Use your credentials to log in and access the Home page.
+#### Upload a File:
+- On the Home page, you can select a file to upload.
+- Only authenticated users can upload files. If not logged in, you'll see an option to log in first.
 
-On the Home page, you can select a file to upload.
-Only authenticated users can upload files. If not logged in, you'll see an option to log in first.
-Logout:
-
-After completing your tasks, click Logout to securely end your session.
+#### Logout:
+- After completing your tasks, click Logout to securely end your session.
