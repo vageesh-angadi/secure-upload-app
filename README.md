@@ -52,6 +52,8 @@ For other environments:
 - Preproduction: npm run start:preprod
 - Production: npm run start:prod
 
+This will take you to the browser. Otherwise, enter the following URL manually in any browser
+- http://localhost:3000
 
 ### 5. Using the Application
 #### Login/Register:
