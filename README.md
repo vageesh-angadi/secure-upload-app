@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Secure Upload App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React application for securely uploading files to AWS S3 with Firebase authentication. Supports multiple environments (`dev`, `preprod`, `prod`) using environment-specific configuration files.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **User Authentication**: Secure login and registration via Firebase.
+- **File Upload**: Authenticated users can upload files to AWS S3.
+- **Environment Configurations**: Separate `.env` files for development, preproduction, and production.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To set up and run this project, you’ll need:
+- **Node.js** installed ([Download Node.js](https://nodejs.org/))
+- **Firebase** and **AWS S3** credentials
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### 1. Clone the Repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+bash
+git clone <your-github-repo-url>
+cd secure-upload-app
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Install Dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Set Up Environment Files
+Create the following environment files in the project’s root directory:
+npm install
 
-### `npm run eject`
+### 3. Set Up Environment Files
+In each of the following environmental file:
+.env.dev
+.env.preprod
+.env.prod
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Replace each placeholder (your-firebase-api-key, etc.) with your actual Firebase and AWS credentials.
+# AWS Config
+REACT_APP_S3_REGION=your-s3-region
+REACT_APP_S3_BUCKET_NAME=your-s3-bucket-name
+REACT_APP_AWS_ACCESS_KEY=your-aws-access-key
+REACT_APP_AWS_SECRET_KEY=your-aws-secret-key
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 4. Running the Application
+To start the app in development mode:
+npm run start:dev
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+For other environments:
+Preproduction: npm run start:preprod
+Production: npm run start:prod
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 5. Using the Application
+Login/Register:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Open the app to access the login page.
+If you don’t have an account, click Register to create one.
+Use your credentials to log in and access the Home page.
+Upload a File:
 
-### Code Splitting
+On the Home page, you can select a file to upload.
+Only authenticated users can upload files. If not logged in, you'll see an option to log in first.
+Logout:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+After completing your tasks, click Logout to securely end your session.
