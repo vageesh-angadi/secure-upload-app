@@ -22,9 +22,9 @@ To set up and run this project, you’ll need:
 
 ### 1. Clone the Repository
 
-bash
-git clone <your-github-repo-url>
-cd secure-upload-app
+
+- git clone <your-github-repo-url>
+- cd secure-upload-app
 
 ### 2. Install Dependencies
 
